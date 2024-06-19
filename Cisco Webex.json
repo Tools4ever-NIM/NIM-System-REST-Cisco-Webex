@@ -1,0 +1,459 @@
+{
+    "schema": {
+      "options": {},
+      "crud_objects": {
+        "devices": {
+            "operations": {
+              "devicesList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/devices"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "displayName": "string*",
+                "placeId": "string*",
+                "orgId": "string*",
+                "capabilities": "string*",
+                "permissions": "string*",
+                "product": "string*",
+                "type": "string*",
+                "tags": "string*",
+                "ip": "string*",
+                "mac": "string*",
+                "serial": "string*",
+                "activeInterface": "string*",
+                "software": "string*",
+                "upgradeChannel": "string*",
+                "primarySipUrl": "string*",
+                "sipUrls": "string*",
+                "errorCodes": "string*",
+                "connectionStatus": "string*",
+                "created": "string*",
+                "firstSeen": "string*",
+                "lastSeen": "string*",
+                "workspaceLocationId": "string*",
+                "locationId": "string*",
+                "managedBy": "string*",
+                "devicePlatform": "string*",
+                "workspaceId": "string*"
+            }
+        },
+        "groups": {
+            "operations": {
+              "groupsList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/groups"
+                },
+                "processing_options": {
+                  "output_field": "groups"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "displayName": "string*",
+                "orgId": "string*",
+                "created": "string*",
+                "lastModified": "string*"
+            }
+        },
+        "members": {
+            "operations": {
+              "membersList": {
+                "method": "get",
+                "call": {
+                    "mode": "iteration",
+                    "table": "groups",
+                    "iterator": "id",
+                    "path": "/v1/groups/{iterator}/members",
+                    "base": {
+                        "group_id": "{iterator}"
+                    }
+                },
+                "processing_options": {
+                  "output_field": "members"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "group_id": "string*",
+                "id": "string*",
+                "type": "string*",
+                "displayName": "string*"
+            }
+        },
+        "licenses": {
+            "operations": {
+              "licensesList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/licenses"
+                },
+                "processing_options": {
+                  "output_field": "licenses"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "name": "string*",
+                "totalUnits": "number*",
+                "consumedUnits": "number*",
+                "consumedByUsers": "number*",
+                "consumedByWorkspaces": "number*",
+                "subscriptionId": "string*"
+            }
+        },
+        "locations": {
+            "operations": {
+              "locationsList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/locations"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "name": "string*",
+                "orgId": "string*",
+                "address": {
+                    "address1": "string*",
+                    "address2": "string*",
+                    "city": "string*",
+                    "state": "string*",
+                    "postalCode": "string*",
+                    "country": "string*"
+                },
+                "timeZone": "string*",
+                "preferredLanguage": "string*",
+                "latitude": "string*",
+                "longitude": "string*"
+            }
+        },
+        "numbers": {
+            "operations": {
+              "numbersList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/telephony/config/numbers"
+                },
+                "processing_options": {
+                  "output_field": "phoneNumbers"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "phoneNumber",
+            "resources": {
+                "phoneNumber": "string*",
+                "extension": "string*",
+                "esn": "string*",
+                "state": "string*",
+                "phoneNumberType": "string*",
+                "mainNumber": "boolean*",
+                "includedTelephonyTypes": "string*",
+                "tollFreeNumber": "boolean*",
+                "location": {
+                    "id": "_:string*",
+                    "name": "_:string*"
+                },
+                "owner": {
+                    "id": "_:string*",
+                    "type": "_:string*",
+                    "firstName": "_:string*",
+                    "lastName": "_:string*"
+                }
+            }
+        },
+        "organizations": {
+            "operations": {
+              "organizationsList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/organizations"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "displayName": "string*",
+                "created": "string*"
+            }
+        },
+        "people": {
+            "operations": {
+              "peopleList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/people"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "emails": ["string*"],
+                "phoneNumbers": [
+                    {
+                        "type": "string*",
+                        "value": "string*",
+                        "primary": "boolean*"
+                    }
+                ],
+                "sipAddresses": [
+                    {
+                        "type": "string*",
+                        "value": "string*",
+                        "primary": "boolean*"
+                    }
+                ],
+                "displayName": "string*",
+                "nickName": "string*",
+                "firstName": "string*",
+                "lastName": "string*",
+                "avatar": "string",
+                "orgId": "string*",
+                "roles": "string*",
+                "licenses": "string*",
+                "created": "string*",
+                "lastModified": "string*",
+                "lastActivity": "string*",
+                "status": "string*",
+                "invitePending": "boolean*",
+                "loginEnabled": "boolean*",
+                "type": "string*",
+                "siteUrls": "string*",
+                "title": "string*",
+                "manager": "string*",
+                "managerId": "string*"
+            }
+        },
+        "resourceGroups": {
+            "operations": {
+              "resource_groupsList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/resourceGroups"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "name": "string*",
+                "orgId": "string*"
+            }
+        },
+        "resourceGroups_members": {
+            "operations": {
+              "membersList": {
+                "method": "get",
+                "call": {
+                    "mode": "normal",
+                    "path": "/v1/resourceGroup/memberships"
+                },
+                "processing_options": {
+                  "output_field": "members"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "resourceGroupId": "string*",
+                "licenseId": "string*",
+                "personId": "string*",
+                "personOrgId": "string*"
+            }
+        },
+        "roles": {
+            "operations": {
+              "rolesList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/roles"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "name": "string*"
+            }
+        },
+        "sessionTypes": {
+            "operations": {
+              "sessionTypesList": {
+                "method": "get",
+                "call": {
+                  "mode": "normal",
+                  "path": "/v1/admin/meeting/config/sessionTypes"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {}
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "id": "string*",
+                "shortName": "string*",
+                "siteUrl": "string*",
+                "name": "string*",
+                "type": "string*"
+            }
+        },
+        "userSessionTypes": {
+            "operations": {
+              "sessionTypesList": {
+                "method": "get",
+                "call": {
+                  "mode": "iteration",
+                    "table": "people",
+                    "iterator": "id",
+                    "path": "/v1/admin/meeting/userconfig/sessionTypes"
+                },
+                "processing_options": {
+                  "output_field": "items"
+                },
+                "query_parameters": {
+                    "personId": "{iterator}"
+                }
+              }
+            },
+            "parameters": {},
+            "key": "id",
+            "resources": {
+                "personId": "string*",
+                "email": "string*",
+                "siteUrl": "string*",
+                "sessionTypes": [
+                    {
+                        "id": "string*",
+                        "shortName": "string*",
+                        "name": "string*",
+                        "type": "string*"
+                    }
+                ]
+            }
+        }
+      }
+    },
+    "rest": {
+      "config": {
+        "baseUrl": "https://{tenant_id}",
+        "get": {
+          "maxPageCount": 5,
+          "query_parameters": {},
+          "pagination": {
+                "mode": "link",
+                "path":[],
+                "page_size":"{page_size}"
+          }
+        },
+        "authentication": "aeries",
+        "call_handling": "generic",
+        "test_connection": {
+          "url": "/v1/people"
+        },
+        "socket_timeout": 3600000,
+        "retry": [
+            {
+                "type": "statusCode",
+                "statusCode": 429,
+                "retry": {
+                    "type": "simple",
+                    "maxCount": 12,
+                    "waitTime": 5
+                }
+            },
+            {
+                "type": "statusCode",
+                "statusCode": 500,
+                "retry": {
+                    "type": "simple",
+                    "maxCount": 12,
+                    "waitTime": 5
+                }
+            },
+            {
+                "type": "connectionError"
+            }
+        ],
+        "accept": "application/json",
+        "headers": {
+          "Authorization": "Bearer {client_secret}"
+        }
+      }
+    },
+    "connection": {
+      "items": [
+        {
+            "name": "page_size",
+            "type": "textbox",
+            "label": "Page Size:",
+            "value": "100"
+        }
+      ]
+    }
+  }
