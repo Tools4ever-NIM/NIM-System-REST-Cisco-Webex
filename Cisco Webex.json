@@ -1,459 +1,2195 @@
 {
-    "schema": {
-      "options": {},
+  "$schema": "./rest-connector.json",
+  "schema": {
       "crud_objects": {
-        "devices": {
-            "operations": {
-              "devicesList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/devices"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          "devices": {
+              "operations": {
+                  "devicesList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/devices"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "displayName": "string*",
+                  "placeId": "string*",
+                  "orgId": "string*",
+                  "capabilities": "string*",
+                  "permissions": "string*",
+                  "product": "string*",
+                  "type": "string*",
+                  "tags": "string*",
+                  "ip": "string*",
+                  "mac": "string*",
+                  "serial": "string*",
+                  "activeInterface": "string*",
+                  "software": "string*",
+                  "upgradeChannel": "string*",
+                  "primarySipUrl": "string*",
+                  "sipUrls": "string*",
+                  "errorCodes": "string*",
+                  "connectionStatus": "string*",
+                  "created": "string*",
+                  "firstSeen": "string*",
+                  "lastSeen": "string*",
+                  "workspaceLocationId": "string*",
+                  "locationId": "string*",
+                  "managedBy": "string*",
+                  "devicePlatform": "string*",
+                  "workspaceId": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "displayName": "string*",
-                "placeId": "string*",
-                "orgId": "string*",
-                "capabilities": "string*",
-                "permissions": "string*",
-                "product": "string*",
-                "type": "string*",
-                "tags": "string*",
-                "ip": "string*",
-                "mac": "string*",
-                "serial": "string*",
-                "activeInterface": "string*",
-                "software": "string*",
-                "upgradeChannel": "string*",
-                "primarySipUrl": "string*",
-                "sipUrls": "string*",
-                "errorCodes": "string*",
-                "connectionStatus": "string*",
-                "created": "string*",
-                "firstSeen": "string*",
-                "lastSeen": "string*",
-                "workspaceLocationId": "string*",
-                "locationId": "string*",
-                "managedBy": "string*",
-                "devicePlatform": "string*",
-                "workspaceId": "string*"
-            }
-        },
-        "groups": {
-            "operations": {
-              "groupsList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/groups"
-                },
-                "processing_options": {
-                  "output_field": "groups"
-                },
-                "query_parameters": {}
+          },
+          "groups": {
+              "operations": {
+                  "groupsList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/groups"
+                      },
+                      "processing_options": {
+                          "output_field": "groups"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "displayName": "string*",
+                  "orgId": "string*",
+                  "created": "string*",
+                  "lastModified": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "displayName": "string*",
-                "orgId": "string*",
-                "created": "string*",
-                "lastModified": "string*"
-            }
-        },
-        "members": {
-            "operations": {
-              "membersList": {
-                "method": "get",
-                "call": {
-                    "mode": "iteration",
-                    "table": "groups",
-                    "iterator": "id",
-                    "path": "/v1/groups/{iterator}/members",
-                    "base": {
-                        "group_id": "{iterator}"
-                    }
-                },
-                "processing_options": {
-                  "output_field": "members"
-                },
-                "query_parameters": {}
+          },
+          "members": {
+              "operations": {
+                  "membersList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "iteration",
+                          "table": "groups",
+                          "iterator": "id",
+                          "path": "/v1/groups/{iterator}/members",
+                          "base": {
+                              "group_id": "{iterator}"
+                          }
+                      },
+                      "processing_options": {
+                          "output_field": "members"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "group_id": "string*",
+                  "id": "string*",
+                  "type": "string*",
+                  "displayName": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "group_id": "string*",
-                "id": "string*",
-                "type": "string*",
-                "displayName": "string*"
-            }
-        },
-        "licenses": {
-            "operations": {
-              "licensesList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/licenses"
-                },
-                "processing_options": {
-                  "output_field": "licenses"
-                },
-                "query_parameters": {}
+          },
+          "licenses": {
+              "operations": {
+                  "licensesList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/licenses"
+                      },
+                      "processing_options": {
+                          "output_field": "licenses"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "name": "string*",
+                  "totalUnits": "number*",
+                  "consumedUnits": "number*",
+                  "consumedByUsers": "number*",
+                  "consumedByWorkspaces": "number*",
+                  "subscriptionId": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "name": "string*",
-                "totalUnits": "number*",
-                "consumedUnits": "number*",
-                "consumedByUsers": "number*",
-                "consumedByWorkspaces": "number*",
-                "subscriptionId": "string*"
-            }
-        },
-        "locations": {
-            "operations": {
-              "locationsList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/locations"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "locations": {
+              "operations": {
+                  "locationsList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/locations"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "name": "string*",
+                  "orgId": "string*",
+                  "address": {
+                      "address1": "string*",
+                      "address2": "string*",
+                      "city": "string*",
+                      "state": "string*",
+                      "postalCode": "string*",
+                      "country": "string*"
+                  },
+                  "timeZone": "string*",
+                  "preferredLanguage": "string*",
+                  "latitude": "string*",
+                  "longitude": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "name": "string*",
-                "orgId": "string*",
-                "address": {
-                    "address1": "string*",
-                    "address2": "string*",
-                    "city": "string*",
-                    "state": "string*",
-                    "postalCode": "string*",
-                    "country": "string*"
-                },
-                "timeZone": "string*",
-                "preferredLanguage": "string*",
-                "latitude": "string*",
-                "longitude": "string*"
-            }
-        },
-        "numbers": {
-            "operations": {
-              "numbersList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/telephony/config/numbers"
-                },
-                "processing_options": {
-                  "output_field": "phoneNumbers"
-                },
-                "query_parameters": {}
+          },
+          "numbers": {
+              "operations": {
+                  "numbersList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/telephony/config/numbers"
+                      },
+                      "processing_options": {
+                          "output_field": "phoneNumbers"
+                      }
+                  }
+              },
+              "key": "phoneNumber",
+              "resources": {
+                  "phoneNumber": "string*",
+                  "extension": "string*",
+                  "esn": "string*",
+                  "state": "string*",
+                  "phoneNumberType": "string*",
+                  "mainNumber": "boolean*",
+                  "includedTelephonyTypes": "string*",
+                  "tollFreeNumber": "boolean*",
+                  "location": {
+                      "id": "_:string*",
+                      "name": "_:string*"
+                  },
+                  "owner": {
+                      "id": "_:string*",
+                      "type": "_:string*",
+                      "firstName": "_:string*",
+                      "lastName": "_:string*"
+                  }
               }
-            },
-            "parameters": {},
-            "key": "phoneNumber",
-            "resources": {
-                "phoneNumber": "string*",
-                "extension": "string*",
-                "esn": "string*",
-                "state": "string*",
-                "phoneNumberType": "string*",
-                "mainNumber": "boolean*",
-                "includedTelephonyTypes": "string*",
-                "tollFreeNumber": "boolean*",
-                "location": {
-                    "id": "_:string*",
-                    "name": "_:string*"
-                },
-                "owner": {
-                    "id": "_:string*",
-                    "type": "_:string*",
-                    "firstName": "_:string*",
-                    "lastName": "_:string*"
-                }
-            }
-        },
-        "organizations": {
-            "operations": {
-              "organizationsList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/organizations"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "organizations": {
+              "operations": {
+                  "organizationsList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/organizations"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "displayName": "string*",
+                  "created": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "displayName": "string*",
-                "created": "string*"
-            }
-        },
-        "people": {
-            "operations": {
-              "peopleList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/people"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "people": {
+              "operations": {
+                  "peopleList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/people"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "emails": [
+                      "string*"
+                  ],
+                  "phoneNumbers": [
+                      {
+                          "type": "string*",
+                          "value": "string*",
+                          "primary": "boolean*"
+                      }
+                  ],
+                  "sipAddresses": [
+                      {
+                          "type": "string*",
+                          "value": "string*",
+                          "primary": "boolean*"
+                      }
+                  ],
+                  "displayName": "string*",
+                  "nickName": "string*",
+                  "firstName": "string*",
+                  "lastName": "string*",
+                  "avatar": "string",
+                  "orgId": "string*",
+                  "roles": "string*",
+                  "licenses": "string*",
+                  "created": "string*",
+                  "lastModified": "string*",
+                  "lastActivity": "string*",
+                  "status": "string*",
+                  "invitePending": "boolean*",
+                  "loginEnabled": "boolean*",
+                  "type": "string*",
+                  "siteUrls": "string*",
+                  "title": "string*",
+                  "manager": "string*",
+                  "managerId": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "emails": ["string*"],
-                "phoneNumbers": [
-                    {
-                        "type": "string*",
-                        "value": "string*",
-                        "primary": "boolean*"
-                    }
-                ],
-                "sipAddresses": [
-                    {
-                        "type": "string*",
-                        "value": "string*",
-                        "primary": "boolean*"
-                    }
-                ],
-                "displayName": "string*",
-                "nickName": "string*",
-                "firstName": "string*",
-                "lastName": "string*",
-                "avatar": "string",
-                "orgId": "string*",
-                "roles": "string*",
-                "licenses": "string*",
-                "created": "string*",
-                "lastModified": "string*",
-                "lastActivity": "string*",
-                "status": "string*",
-                "invitePending": "boolean*",
-                "loginEnabled": "boolean*",
-                "type": "string*",
-                "siteUrls": "string*",
-                "title": "string*",
-                "manager": "string*",
-                "managerId": "string*"
-            }
-        },
-        "resourceGroups": {
-            "operations": {
-              "resource_groupsList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/resourceGroups"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "resourceGroups": {
+              "operations": {
+                  "resource_groupsList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/resourceGroups"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "name": "string*",
+                  "orgId": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "name": "string*",
-                "orgId": "string*"
-            }
-        },
-        "resourceGroups_members": {
-            "operations": {
-              "membersList": {
-                "method": "get",
-                "call": {
-                    "mode": "normal",
-                    "path": "/v1/resourceGroup/memberships"
-                },
-                "processing_options": {
-                  "output_field": "members"
-                },
-                "query_parameters": {}
+          },
+          "resourceGroups_members": {
+              "operations": {
+                  "membersList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/resourceGroup/memberships"
+                      },
+                      "processing_options": {
+                          "output_field": "members"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "resourceGroupId": "string*",
+                  "licenseId": "string*",
+                  "personId": "string*",
+                  "personOrgId": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "resourceGroupId": "string*",
-                "licenseId": "string*",
-                "personId": "string*",
-                "personOrgId": "string*"
-            }
-        },
-        "roles": {
-            "operations": {
-              "rolesList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/roles"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "roles": {
+              "operations": {
+                  "rolesList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/roles"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "name": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "name": "string*"
-            }
-        },
-        "sessionTypes": {
-            "operations": {
-              "sessionTypesList": {
-                "method": "get",
-                "call": {
-                  "mode": "normal",
-                  "path": "/v1/admin/meeting/config/sessionTypes"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {}
+          },
+          "sessionTypes": {
+              "operations": {
+                  "sessionTypesList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "normal",
+                          "path": "/v1/admin/meeting/config/sessionTypes"
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      }
+                  }
+              },
+              "key": "id",
+              "resources": {
+                  "id": "string*",
+                  "shortName": "string*",
+                  "siteUrl": "string*",
+                  "name": "string*",
+                  "type": "string*"
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "id": "string*",
-                "shortName": "string*",
-                "siteUrl": "string*",
-                "name": "string*",
-                "type": "string*"
-            }
-        },
-        "userSessionTypes": {
-            "operations": {
-              "sessionTypesList": {
-                "method": "get",
-                "call": {
-                  "mode": "iteration",
-                    "table": "people",
-                    "iterator": "id",
-                    "path": "/v1/admin/meeting/userconfig/sessionTypes"
-                },
-                "processing_options": {
-                  "output_field": "items"
-                },
-                "query_parameters": {
-                    "personId": "{iterator}"
-                }
+          },
+          "userSessionTypes": {
+              "operations": {
+                  "sessionTypesList": {
+                      "method": "get",
+                      "call": {
+                          "mode": "iteration",
+                          "table": "people",
+                          "iterator": "id",
+                          "path": "/v1/admin/meeting/userconfig/sessionTypes",
+                          "query_parameters": {
+                            "personId": "{iterator}"
+                          }
+                      },
+                      "processing_options": {
+                          "output_field": "items"
+                      },
+                      "warning_only": [
+                          400
+                      ]
+                  }
+              },
+              "key": "personId",
+              "resources": {
+                  "personId": "string*",
+                  "email": "string*",
+                  "siteUrl": "string*",
+                  "sessionTypes": [
+                      {
+                          "id": "string*",
+                          "shortName": "string*",
+                          "name": "string*",
+                          "type": "string*"
+                      }
+                  ]
               }
-            },
-            "parameters": {},
-            "key": "id",
-            "resources": {
-                "personId": "string*",
-                "email": "string*",
-                "siteUrl": "string*",
-                "sessionTypes": [
-                    {
-                        "id": "string*",
-                        "shortName": "string*",
-                        "name": "string*",
-                        "type": "string*"
-                    }
-                ]
-            }
-        }
-      }
-    },
-    "rest": {
-      "config": {
-        "baseUrl": "https://{tenant_id}",
-        "get": {
-          "maxPageCount": 5,
-          "query_parameters": {},
-          "pagination": {
-                "mode": "link",
-                "path":[],
-                "page_size":"{page_size}"
           }
-        },
-        "authentication": "aeries",
-        "call_handling": "generic",
-        "test_connection": {
-          "url": "/v1/people"
-        },
-        "socket_timeout": 3600000,
-        "retry": [
-            {
-                "type": "statusCode",
-                "statusCode": 429,
-                "retry": {
-                    "type": "simple",
-                    "maxCount": 12,
-                    "waitTime": 5
-                }
-            },
-            {
-                "type": "statusCode",
-                "statusCode": 500,
-                "retry": {
-                    "type": "simple",
-                    "maxCount": 12,
-                    "waitTime": 5
-                }
-            },
-            {
-                "type": "connectionError"
-            }
-        ],
-        "accept": "application/json",
-        "headers": {
-          "Authorization": "Bearer {client_secret}"
-        }
       }
-    },
-    "connection": {
+  },
+  "rest": {
+      "config": {
+          "baseUrl": "https://webexapis.com",
+          "get": {
+              "maxPageCount": 5,
+              "pagination": {
+                  "mode": "link",
+                  "page_size": "{page_size}"
+              }
+          },
+          "authentication": "authorization_code_grant",
+          "call_handling": "generic",
+          "test_connection": {
+              "url": "/v1/people"
+          },
+          "socket_timeout": 3600000,
+          "retry": [
+              {
+                  "type": "statusCode",
+                  "statusCode": 429,
+                  "retry": {
+                      "type": "simple",
+                      "maxCount": 12,
+                      "waitTime": 5
+                  }
+              },
+              {
+                  "type": "statusCode",
+                  "statusCode": 500,
+                  "retry": {
+                      "type": "simple",
+                      "maxCount": 12,
+                      "waitTime": 5
+                  }
+              },
+              {
+                  "type": "connectionError"
+              }
+          ],
+          "accept": "application/json"
+      },
+      "authOptions": {
+          "type": "authorization_code_grant",
+          "authUrl": "https://webexapis.com/v1/access_token",
+          "loginUrl": "https://webexapis.com/v1/authorize?response_type=code&client_id={client_id}&redirect_uri={redirect_uri}&scope={scopes}",
+          "scopes": [
+              "spark-admin:resource_groups_read",
+              "Identity:contact",
+              "spark-admin:roles_read",
+              "spark-admin:organizations_read",
+              "identity:people_read",
+              "spark-admin:workspaces_read",
+              "spark-admin:resource_group_memberships_read",
+              "spark-admin:call_qualities_read",
+              "identity:organizations_read",
+              "spark:kms",
+              "spark-admin:devices_read",
+              "identity:groups_read",
+              "spark-admin:licenses_read",
+              "spark-admin:people_read",
+              "meeting:admin_schedule_read",
+              "meeting:admin_config_read"
+          ]
+      }
+  },
+  "connection": {
       "items": [
-        {
-            "name": "page_size",
-            "type": "textbox",
-            "label": "Page Size:",
-            "value": "100"
-        }
+          {
+              "name": "page_size",
+              "type": "textbox",
+              "label": "Page Size:",
+              "value": "100"
+          }
       ]
-    }
-  }
+  },
+  "config_scenarios": [
+      {
+          "name": "Default",
+          "description": "",
+          "version": "1.0",
+          "createTime": 1740167707998,
+          "modifyTime": 1740167707998,
+          "name_values": [
+              {
+                  "name": "access_token",
+                  "value": {
+                      "type": "crypto_aes",
+                      "data": "MWMo4AGzZ6v4OXwUviGRPgUeA27hUnAgfMj674oWs27X06thrm4KfFpK6migrQ3Fjp8t4l34InaQwJESOgX/JtGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
+                      "tag": "HZOvoXuK4OqbNDJtjfZeOw=="
+                  }
+              },
+              {
+                  "name": "client_id",
+                  "value": null
+              },
+              {
+                  "name": "client_secret",
+                  "value": null
+              },
+              {
+                  "name": "collections",
+                  "value": [
+                      "devices",
+                      "groups",
+                      "members",
+                      "locations",
+                      "numbers",
+                      "organizations",
+                      "people",
+                      "people_phoneNumbers",
+                      "people_sipAddresses",
+                      "resourceGroups",
+                      "roles",
+                      "sessionTypes",
+                      "userSessionTypes",
+                      "userSessionTypes_sessionTypes"
+                  ]
+              },
+              {
+                  "name": "expires_at_utc",
+                  "value": "2025-03-07T16:08:19.288Z"
+              },
+              {
+                  "name": "page_size",
+                  "value": null
+              },
+              {
+                  "name": "proxy_address",
+                  "value": null
+              },
+              {
+                  "name": "proxy_password",
+                  "value": null
+              },
+              {
+                  "name": "proxy_use_flag",
+                  "value": null
+              },
+              {
+                  "name": "proxy_use_username_password_flag",
+                  "value": null
+              },
+              {
+                  "name": "proxy_username",
+                  "value": null
+              },
+              {
+                  "name": "redirect_uri",
+                  "value": null
+              },
+              {
+                  "name": "refresh_token",
+                  "value": {
+                      "type": "crypto_aes",
+                      "data": "MXAv8AKKVe/sOWgUvVSdOBIOA272bGc1fMj1/50okW7U0IVlukANbVhJwCG3kwbTmY8yuV3WCyyHwLMSOCjjZdGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
+                      "tag": "ikNk9cdGYx6mssapc1VTOg=="
+                  }
+              },
+              {
+                  "name": "tenant_id",
+                  "value": null
+              }
+          ],
+          "collections": [
+              {
+                  "col_name": "devices",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "displayName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "placeId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "orgId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "organizations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "capabilities",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "permissions",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "product",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "tags",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "ip",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "mac",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "serial",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "activeInterface",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "software",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "upgradeChannel",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "primarySipUrl",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "sipUrls",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "errorCodes",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "connectionStatus",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "created",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "firstSeen",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "lastSeen",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "workspaceLocationId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "locationId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "managedBy",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "devicePlatform",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "workspaceId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "displayName",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "displayName",
+                              "placeId",
+                              "orgId",
+                              "capabilities",
+                              "permissions",
+                              "product",
+                              "type",
+                              "tags",
+                              "ip",
+                              "mac",
+                              "serial",
+                              "activeInterface",
+                              "software",
+                              "upgradeChannel",
+                              "primarySipUrl",
+                              "sipUrls",
+                              "errorCodes",
+                              "connectionStatus",
+                              "created",
+                              "firstSeen",
+                              "lastSeen",
+                              "workspaceLocationId",
+                              "locationId",
+                              "managedBy",
+                              "devicePlatform",
+                              "workspaceId"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "groups",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "displayName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "orgId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "organizations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "created",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "lastModified",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "displayName",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "displayName",
+                              "orgId",
+                              "created",
+                              "lastModified"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "members",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "group_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "groups"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "displayName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "group_id",
+                              "id",
+                              "type",
+                              "displayName"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [
+                      {
+                          "field_a": "group_id",
+                          "col_a": "groups",
+                          "field_b": "id",
+                          "col_b": "people"
+                      }
+                  ],
+                  "source": "data"
+              },
+              {
+                  "col_name": "locations",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "orgId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "organizations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "address1",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "address2",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "city",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "state",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "postalCode",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "country",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "timeZone",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "preferredLanguage",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "latitude",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "longitude",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "name",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "name",
+                              "orgId",
+                              "address1",
+                              "address2",
+                              "city",
+                              "state",
+                              "postalCode",
+                              "country",
+                              "timeZone",
+                              "preferredLanguage",
+                              "latitude",
+                              "longitude"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "numbers",
+                  "fields": [
+                      {
+                          "field_name": "phoneNumber",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "extension",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "esn",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "state",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "phoneNumberType",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "mainNumber",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "includedTelephonyTypes",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "tollFreeNumber",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "location_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "locations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "location_name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "owner_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "owner_type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "owner_firstName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "owner_lastName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "phoneNumber",
+                              "extension",
+                              "esn",
+                              "state",
+                              "phoneNumberType",
+                              "mainNumber",
+                              "includedTelephonyTypes",
+                              "tollFreeNumber",
+                              "location_id",
+                              "location_name",
+                              "owner_id",
+                              "owner_type",
+                              "owner_firstName",
+                              "owner_lastName"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "organizations",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "displayName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "created",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "displayName",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "displayName",
+                              "created"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "people",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "emails",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "displayName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "nickName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "firstName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "lastName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "orgId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "organizations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "roles",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "licenses",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "created",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "lastModified",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "lastActivity",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "status",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "invitePending",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "loginEnabled",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "siteUrls",
+                          "field_type": "string-array",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "title",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "manager",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "managerId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "phoneNumbers",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "sipAddresses",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "displayName",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "emails",
+                              "displayName",
+                              "nickName",
+                              "firstName",
+                              "lastName",
+                              "orgId",
+                              "roles",
+                              "licenses",
+                              "created",
+                              "lastModified",
+                              "lastActivity",
+                              "status",
+                              "invitePending",
+                              "loginEnabled",
+                              "type",
+                              "siteUrls",
+                              "title",
+                              "manager",
+                              "managerId"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "people_phoneNumbers",
+                  "fields": [
+                      {
+                          "field_name": "people_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "value",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "primary",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "type",
+                              "value",
+                              "primary"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "people_sipAddresses",
+                  "fields": [
+                      {
+                          "field_name": "people_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "value",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "primary",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "type",
+                              "value",
+                              "primary"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "resourceGroups",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "orgId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "organizations"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "name",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "name",
+                              "orgId"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "roles",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "name",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "name"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "sessionTypes",
+                  "fields": [
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "shortName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "siteUrl",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "id",
+                  "display": "name",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "shortName",
+                              "siteUrl",
+                              "name",
+                              "type"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "userSessionTypes",
+                  "fields": [
+                      {
+                          "field_name": "personId",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "people"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "email",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "siteUrl",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "sessionTypes",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "sessionTypes"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "personId",
+                              "email",
+                              "siteUrl"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              },
+              {
+                  "col_name": "userSessionTypes_sessionTypes",
+                  "fields": [
+                      {
+                          "field_name": "userSessionTypes_id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "id",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [
+                              "sessionTypes"
+                          ],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "shortName",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "name",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      },
+                      {
+                          "field_name": "type",
+                          "field_type": "string",
+                          "include": true,
+                          "field_format": "",
+                          "field_source": "data",
+                          "javascript": "",
+                          "ref_col": [],
+                          "reference": false,
+                          "ref_col_fields": []
+                      }
+                  ],
+                  "key": "",
+                  "display": "",
+                  "name_values": [
+                      {
+                          "name": "properties",
+                          "value": [
+                              "id",
+                              "shortName",
+                              "name",
+                              "type"
+                          ]
+                      }
+                  ],
+                  "sys_nn": [],
+                  "source": "data"
+              }
+          ]
+      }
+  ]
+}
