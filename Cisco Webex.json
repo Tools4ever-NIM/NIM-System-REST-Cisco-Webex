@@ -1,5 +1,4 @@
 {
-    "$schema": "./rest-connector.json",
     "schema": {
         "crud_objects": {
             "devices": {
@@ -103,18 +102,21 @@
                             "path": "/v1/licenses"
                         },
                         "processing_options": {
-                            "output_field": "licenses"
+                            "output_field": "items"
                         }
                     }
                 },
                 "key": "id",
                 "resources": {
+                    "id": "string*",
                     "name": "string*",
                     "totalUnits": "number*",
                     "consumedUnits": "number*",
                     "consumedByUsers": "number*",
                     "consumedByWorkspaces": "number*",
-                    "subscriptionId": "string*"
+                    "subscriptionId": "string*",
+                    "siteType": "string*",
+                    "siteUrl": "string*"
                 }
             },
             "locations": {
@@ -350,7 +352,7 @@
                             "table": "people",
                             "iterator": "id",
                             "path": "/v1/admin/meeting/userconfig/sessionTypes",
-                            "query_parameters": {
+                            "queryParameters": {
                                 "personId": "{iterator}"
                             }
                         },
@@ -425,22 +427,21 @@
             "authUrl": "https://webexapis.com/v1/access_token",
             "loginUrl": "https://webexapis.com/v1/authorize?response_type=code&client_id={client_id}&redirect_uri={redirect_uri}&scope={scopes}",
             "scopes": [
-                "spark-admin:resource_groups_read",
                 "Identity:contact",
-                "spark-admin:roles_read",
-                "spark-admin:organizations_read",
-                "identity:people_read",
-                "spark-admin:workspaces_read",
-                "spark-admin:resource_group_memberships_read",
-                "spark-admin:call_qualities_read",
-                "identity:organizations_read",
-                "spark:kms",
-                "spark-admin:devices_read",
                 "identity:groups_read",
-                "spark-admin:licenses_read",
-                "spark-admin:people_read",
+                "identity:organizations_read",
+                "meeting:admin_config_read",
                 "meeting:admin_schedule_read",
-                "meeting:admin_config_read"
+                "spark:kms",
+                "spark-admin:call_qualities_read",
+                "spark-admin:devices_read",
+                "spark-admin:licenses_read",
+                "spark-admin:organizations_read",
+                "spark-admin:people_read",
+                "spark-admin:resource_group_memberships_read",
+                "spark-admin:resource_groups_read",
+                "spark-admin:roles_read",
+                "spark-admin:workspaces_read"
             ]
         }
     },
@@ -459,16 +460,12 @@
             "name": "Default",
             "description": "Default Configuration",
             "version": "1.0",
-            "createTime": 1740167707998,
-            "modifyTime": 1740167707998,
+            "createTime": 1757359671928,
+            "modifyTime": 1757359671928,
             "name_values": [
                 {
                     "name": "access_token",
-                    "value": {
-                        "type": "crypto_aes",
-                        "data": "MWMo4AGzZ6v4OXwUviGRPgUeA27hUnAgfMj674oWs27X06thrm4KfFpK6migrQ3Fjp8t4l34InaQwJESOgX/JtGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
-                        "tag": "HZOvoXuK4OqbNDJtjfZeOw=="
-                    }
+                    "value": null
                 },
                 {
                     "name": "client_id",
@@ -484,6 +481,7 @@
                         "devices",
                         "groups",
                         "members",
+                        "licenses",
                         "locations",
                         "numbers",
                         "organizations",
@@ -491,6 +489,7 @@
                         "people_phoneNumbers",
                         "people_sipAddresses",
                         "resourceGroups",
+                        "resourceGroups_members",
                         "roles",
                         "sessionTypes",
                         "userSessionTypes",
@@ -499,7 +498,7 @@
                 },
                 {
                     "name": "expires_at_utc",
-                    "value": "2025-03-07T16:08:19.288Z"
+                    "value": null
                 },
                 {
                     "name": "page_size",
@@ -531,11 +530,7 @@
                 },
                 {
                     "name": "refresh_token",
-                    "value": {
-                        "type": "crypto_aes",
-                        "data": "MXAv8AKKVe/sOWgUvVSdOBIOA272bGc1fMj1/50okW7U0IVlukANbVhJwCG3kwbTmY8yuV3WCyyHwLMSOCjjZdGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
-                        "tag": "ikNk9cdGYx6mssapc1VTOg=="
-                    }
+                    "value": null
                 },
                 {
                     "name": "tenant_id",
@@ -1016,7 +1011,7 @@
                         }
                     ],
                     "key": "",
-                    "display": "",
+                    "display": "displayName",
                     "name_values": [
                         {
                             "name": "properties",
@@ -1272,7 +1267,7 @@
                         },
                         {
                             "field_name": "mainNumber",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -1294,7 +1289,7 @@
                         },
                         {
                             "field_name": "tollFreeNumber",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -1522,6 +1517,17 @@
                             "ref_col_fields": []
                         },
                         {
+                            "field_name": "avatar",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
                             "field_name": "orgId",
                             "field_type": "string",
                             "include": true,
@@ -1602,7 +1608,7 @@
                         },
                         {
                             "field_name": "invitePending",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -1613,7 +1619,7 @@
                         },
                         {
                             "field_name": "loginEnabled",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -1716,6 +1722,7 @@
                                 "lastName",
                                 "orgId",
                                 "roles",
+                                "avatar",
                                 "licenses",
                                 "created",
                                 "lastModified",
@@ -1774,7 +1781,7 @@
                         },
                         {
                             "field_name": "primary",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -1839,7 +1846,7 @@
                         },
                         {
                             "field_name": "primary",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2188,6 +2195,130 @@
                     ],
                     "sys_nn": [],
                     "source": "data"
+                },
+                {
+                    "col_name": "licenses",
+                    "fields": [
+                        {
+                            "field_name": "id",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "name",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "totalUnits",
+                            "field_type": "number",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "consumedUnits",
+                            "field_type": "number",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "consumedByUsers",
+                            "field_type": "number",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "consumedByWorkspaces",
+                            "field_type": "number",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "subscriptionId",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "siteUrl",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "siteType",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        }
+                    ],
+                    "key": "id",
+                    "display": "name",
+                    "name_values": [
+                        {
+                            "name": "properties",
+                            "value": [
+                                "id",
+                                "name",
+                                "totalUnits",
+                                "consumedUnits",
+                                "consumedByUsers",
+                                "consumedByWorkspaces",
+                                "subscriptionId",
+                                "siteUrl",
+                                "siteType"
+                            ]
+                        }
+                    ],
+                    "sys_nn": [],
+                    "source": "data"
                 }
             ]
         },
@@ -2195,16 +2326,12 @@
             "name": "UserNumbers",
             "description": "Provides tables specifically for getting user phone number information",
             "version": "1.0",
-            "createTime": 1740168778180,
-            "modifyTime": 1740168778180,
+            "createTime": 1757359671928,
+            "modifyTime": 1757359671928,
             "name_values": [
                 {
                     "name": "access_token",
-                    "value": {
-                        "type": "crypto_aes",
-                        "data": "MWMo4AGzZ6v4OXwUviGRPgUeA27hUnAgfMj674oWs27X06thrm4KfFpK6migrQ3Fjp8t4l34InaQwJESOgX/JtGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
-                        "tag": "HZOvoXuK4OqbNDJtjfZeOw=="
-                    }
+                    "value": null
                 },
                 {
                     "name": "client_id",
@@ -2227,7 +2354,7 @@
                 },
                 {
                     "name": "expires_at_utc",
-                    "value": "2025-03-07T16:08:19.288Z"
+                    "value": null
                 },
                 {
                     "name": "page_size",
@@ -2263,11 +2390,7 @@
                 },
                 {
                     "name": "refresh_token",
-                    "value": {
-                        "type": "crypto_aes",
-                        "data": "MXAv8AKKVe/sOWgUvVSdOBIOA272bGc1fMj1/50okW7U0IVlukANbVhJwCG3kwbTmY8yuV3WCyyHwLMSOCjjZdGEmgEsnFRmvSJP82AdRY84oxwJzJNh4YTRJ/jcvs10KVftvBpijKbYJw==",
-                        "tag": "ikNk9cdGYx6mssapc1VTOg=="
-                    }
+                    "value": null
                 }
             ],
             "collections": [
@@ -2505,7 +2628,7 @@
                         },
                         {
                             "field_name": "mainNumber",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2527,7 +2650,7 @@
                         },
                         {
                             "field_name": "tollFreeNumber",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2755,6 +2878,17 @@
                             "ref_col_fields": []
                         },
                         {
+                            "field_name": "avatar",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
                             "field_name": "orgId",
                             "field_type": "string",
                             "include": true,
@@ -2835,7 +2969,7 @@
                         },
                         {
                             "field_name": "invitePending",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2846,7 +2980,7 @@
                         },
                         {
                             "field_name": "loginEnabled",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -3018,7 +3152,7 @@
                         },
                         {
                             "field_name": "primary",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -3083,7 +3217,7 @@
                         },
                         {
                             "field_name": "primary",
-                            "field_type": "string",
+                            "field_type": "boolean",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
